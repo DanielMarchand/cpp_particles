@@ -8,9 +8,9 @@ set(CMAKE_CXX_STANDARD 17)
 include(FetchContent)
 FetchContent_Declare(
   googletest
-  URL https://github.com/google/googletest/archive/release-1.10.0.tar.gz
+  URL https://github.com/google/googletest/archive/release-1.11.0.tar.gz
 )
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
 
 # pybind11
 FetchContent_Declare(
@@ -28,6 +28,12 @@ FetchContent_Declare(
 
 # Make available all the declared content
 FetchContent_MakeAvailable(googletest pybind11 eigen)
+
+
+# Set compiler flags
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+set_target_properties(gtest PROPERTIES COMPILE_FLAGS -Wno-error)
+set_target_properties(gtest_main PROPERTIES COMPILE_FLAGS -Wno-error)
 
 enable_testing()
 
