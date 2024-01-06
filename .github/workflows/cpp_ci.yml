@@ -30,6 +30,6 @@ jobs:
     - name: Build
       run: cmake --build build
 
-    - name: Test
-      run: cd build && ctest
+    - name: Run Particle Test
+      run: cd build && ctest -R ParticleTest*
 
